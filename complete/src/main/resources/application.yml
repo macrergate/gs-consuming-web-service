@@ -3,4 +3,4 @@ logging:
     com.example.consumingwebservice: INFO
     org:
       springframework:
-        ws: DEBUG
+        ws: TRACE

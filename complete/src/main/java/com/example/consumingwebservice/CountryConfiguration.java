@@ -18,9 +18,9 @@ public class CountryConfiguration {
 	}
 
 	@Bean
-	public CountryClient countryClient(Jaxb2Marshaller marshaller) {
-		CountryClient client = new CountryClient();
-		client.setDefaultUri("http://localhost:8080/ws");
+	public GetCursOnDateClient cursOnDateClient(Jaxb2Marshaller marshaller) {
+		GetCursOnDateClient client = new GetCursOnDateClient();
+		client.setDefaultUri("http://cbr.ru/DailyInfoWebServ/DailyInfo.asmx");
 		client.setMarshaller(marshaller);
 		client.setUnmarshaller(marshaller);
 		return client;

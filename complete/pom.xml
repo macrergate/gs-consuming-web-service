@@ -91,7 +91,10 @@
 						<generatePackage>com.example.consumingwebservice.wsdl</generatePackage>
 						<schemas>
 							<schema>
-								<url>http://localhost:8080/ws/countries.wsdl</url>
+								<url>https://cbr.ru/DailyInfoWebServ/DailyInfo.asmx?WSDL</url>
+							</schema>
+							<schema>
+								<url>https://www.w3.org/2001/XMLSchema.xsd</url>
 							</schema>
 						</schemas>
 					</configuration>

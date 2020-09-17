@@ -1,12 +1,15 @@
 
 package com.example.consumingwebservice;
 
+import com.example.consumingwebservice.wsdl.EnumReutersValutesResponse;
+import com.example.consumingwebservice.wsdl.GetCursOnDateXMLResponse;
+import com.example.consumingwebservice.wsdl.GetReutersCursOnDateXMLResponse;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import com.example.consumingwebservice.wsdl.GetCountryResponse;
 
 @SpringBootApplication
 public class ConsumingWebServiceApplication {
@@ -16,15 +19,18 @@ public class ConsumingWebServiceApplication {
 	}
 
 	@Bean
-	CommandLineRunner lookup(CountryClient quoteClient) {
+	CommandLineRunner lookup(GetCursOnDateClient cursClient) {
 		return args -> {
-			String country = "Spain";
+
+			LocalDateTime dt = LocalDate.parse("2020-09-15").atStartOfDay();
 
 			if (args.length > 0) {
-				country = args[0];
+				dt = LocalDateTime.parse(args[0]);
 			}
-			GetCountryResponse response = quoteClient.getCountry(country);
-			System.err.println(response.getCountry().getCurrency());
+
+			EnumReutersValutesResponse.EnumReutersValutesResult result = cursClient.getReutersValutes().getEnumReutersValutesResult();
+
+			GetReutersCursOnDateXMLResponse response = cursClient.getReutersCourseOnDate(dt);
 		};
 	}
 
